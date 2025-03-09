@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for CWRU CDS Qualify Exam
+% Version 1.0 (10-Jul-2023)
+%
+% Original author:
+% Mengying Wang
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% QE written report requirements of the CDS department: 11 pt font, single-spaced, single column, 1" margins.
+
+% Fill in your title, name, and committee members in commands.tex.
+
+\documentclass[11pt, letterpaper]{article}
+
+% Load necessary packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{lipsum} % For generating dummy text. 
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec} % For customizing section titles
+\usepackage{abstract} % For customizing abstract
+\usepackage[numbers]{natbib} % For bibliography
+\usepackage{hyperref} % Create link for content
+\usepackage{multibib}
+\usepackage{tcolorbox}
+
+\newcites{mypub}{Published}
+\newcites{review}{Under Review}
+\newcites{prepare}{In Preparation}
+
+
+\singlespacing % Set single spacing
+\setlength{\parskip}{0.25\baselineskip} % Set paragraph spacing
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% \input{commands}
+
+% Meta Information
+\newcommand{\qetitle}{The cosmic dance of galaxies and their Massive black holes}
+\newcommand{\name}{Pranav Satheesh}
+\newcommand{\degreeaward}{Ph.D. in Physics} 
+\newcommand{\department}{Department of Physics} 
+\newcommand{\university}{University of Florida} 
+\newcommand{\monthyeardate}{\ifcase \month \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi, \number \year}
+% \newcommand{\monthyeardate}{June, 2023}
+
+% Committee Members
+\newcommand{\chair}{Your Chair}
+\newcommand{\advisor}{Your Advisor}
+\newcommand{\committee}{Committee Member}
+
+
+
+%equations
+\newcommand{\msun}{M$_{\odot}$}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+% Title page
+\begin{titlepage}
+    \begin{center}
+        \vspace*{0.3in}
+        \Huge{\textbf{\MakeUppercase{\qetitle}}}
+
+        \vspace{0.35in}
+        \Large{\textbf{by}}
+        
+        \vspace{0.45in}
+        \Large{\textbf{\MakeUppercase{\name}}}
+        
+        \vspace{0.5in}
+        \Large{A qualifying examination submitted in partial fulfillment \\
+        of the requirements for the degree of \\
+        \degreeaward}
+
+        \vspace{0.8in}
+        \large{Committee Members: \\
+        Prof. \chair (Chair)\\
+        Prof. \advisor (Advisor) \\
+        Prof. \committee}
+
+        \vspace{0.7in}
+        \Large{\department \\
+        \university \\
+        \monthyeardate}
+    \end{center}
+\end{titlepage}
+
+
+% % Abstract page
+% \thispagestyle{plain}
+% \begin{center}
+%     \Large
+%     \textbf{\qetitle}
+        
+%     \vspace{0.13in}
+%     \textbf{\name}
+    
+%     \vspace{0.13in}
+%     \normalsize{Committee: Dr. \chair(Chair), Dr. \advisor(Advisor), Dr. \committee}
+       
+%     \vspace{0.3in}
+%     \large
+%     \textbf{Abstract}
+% \end{center}
+% \input{sections/abstract}
+% \newpage
+
+
+% Table of contents
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Motivation}
+
+Massive black holes (MBHs) are found in the centers of most massive galaxies \cite{Kormendy_1995,magorrian_demography_1998} and play a key role in galaxy evolution, as evidenced by the correlation between MBH masses and stellar bulge properties \cite{ferrarese_fundamental_2000,gultekin_m-sigma_2009,Kormendy_2013,mcconnell_revisiting_2013}. Despite their importance, however, the formation and early evolution of massive black holes remain poorly understood. Current formation models propose that MBH ``seeds" form early in the Universe via one or more mechanisms \cite{Madau_2001,Davies2011,Bromm_Loeb_2003} and grow across cosmic time via gas accretion and mergers. In the hierarchical model of structure formation, galaxy mergers drive MBH mergers — a process spanning vast spatial scales \cite{Begelman1980,merritt_massive_2005}, from kpc separations during galaxy mergers to sub-pc in the final stages of black hole (BH) coalescence (see Figure \ref{fig:path-to-merger}). The efficiency of MBH binary hardening depends on the properties of the host environment, and it is not assured that the MBHs will merge within a Hubble time \cite{2003MerritandMilosavljevic}. 
+
+MBH binaries (MBHBs) are the loudest gravitational wave (GW) sources in the universe, with chirp frequencies ranging from millihertz (mHz) for MBHs around $\sim 10^6$ \msun{} to nanohertz (nHz) for MBHs around $10^8$ \msun{} \citep{Sesana2013}. In the nanohertz frequency range, GWs from a population of MBHBs can combine to produce a gravitational wave background (GWB). Pulsar timing arrays (PTAs) around the world have found compelling evidence for a GWB that is consistent with a MBHB origin of the background \citep{agazie_nanograv_2023,antoniadis_second_2023,reardon_search_2023,xu_searching_2023}. The early growth and evolution of MBHs will be directly probed by the planned Laser Interferometer Space Antenna (LISA), which will detect gravitational waves (GWs) from merging binaries with masses in the range $\sim 10^3$ - $10^7$ \msun{} out to redshifts of $z \sim 20$ \cite{Amaro2017lisa}. The merger rates of MBHs observed by LISA will be sensitive to MBH formation mechanisms and merger timescales. Current predictions of these rates vary significantly, with estimates ranging from a few to tens of detections per year, depending on the assumptions and physics included in the models \cite{Klein_2016,Kelley_2017a,Kelley_2018,Dayal_2019,Katz2020}. This uncertainty highlights the need for improved modeling tools that incorporate relevant physics to study how MBH formation mechanisms, dynamics, and growth collectively shape merger rates. 
+
+Electromagnetic (EM) observations from missions such as the James Webb Space Telescope (JWST) will complement LISA's GW observations by exploring MBH origins and assembly in the early Universe. JWST has already begun transforming our understanding of the high-redshift Universe with detections of several Active Galactic Nuclei (AGN) between $z \sim 4-11$ that are $\sim 10-100$ times more massive than expected by local BH-galaxy scaling relations \cite{Larson_2023, harikane2023jwstnirspeccensusbroadlineagns, matthee2024littlereddotsabundant, goulding2023uncovergrowthmassiveblack}. These ``overmassive" BHs pose a challenge to existing MBH seed and growth models, with some studies \cite{Pacucci_2023,natarajan2023detectionovermassiveblackhole} suggesting they may require heavy seed scenarios — such as rapid collapse of massive gas clouds. To resolve these puzzles, theoretical studies of MBH populations must rigorously compare predictions with JWST observations.
+
+
+Cosmological hydrodynamical simulations are powerful tools for studying the formation and evolution of MBH populations \cite{HorizonAGN2014,2015Illustris,2015Eagle,nelson2021illustristngsimulationspublicdata}. Although semi-analytical models \cite{Sesana_2011,Barausse_2012, Klein_2016,Dayal_2019,bonetti_post-newtonian_2019, Valiante_2020} offer a computationally inexpensive alternative, they cannot trace the internal structure and evolution of galaxies, which is a significant limitation
+for modeling MBH binaries (MBHBs). In contrast, cosmological simulations self-consistently track the evolution of dark matter and baryons over large volumes.  However, there is an inherent trade-off between the size of the simulation and the mass and spatial resolution required to resolve MBHB dynamics. To address this, sub-grid models for MBH dynamics are required to account for hardening processes that shrink the MBHB orbit till their merger. Semi-analytic MBHB evolution models are used to compute merger timescales in post-processing of these cosmological simulations. 
+
+
+A variety of physical effects — such as dynamical friction, stellar scattering, gas dynamics, triple interactions and GW emission, can affect binary hardening depending on the merging environment and must be accounted for when calculating merger timescales. After a merger, GW recoil kick imparted to the merger remnant by asymmetric GW emission \cite{Bekenstein1973} is another key dynamical effect. A BH subjected to GW recoil can exceed the host galaxy’s escape velocity and be ejected, which prevents subsequent mergers \cite{volonteri_gravitational_2007,Gerosa_2014,Blecha2016,sayeb_massive_2021}. Similarly, triple MBH interactions can also cause the ejection of the lightest MBH in the system via gravitational slingshot kicks \cite{volonteri_assembly_2003}. \textbf{Part of the goal of my work is to model MBH dynamics within these cosmological simulations and understand how the inclusion of different physical processes impacts MBH evolution.}
+
+The MBH dynamics mentioned above depend strongly on the host galaxy properties. Similarly for EM ob
+
+he dynamics of BHB inspiral similarly depend on the host density and velocity profiles
+Another part of the puzzle is the host galaxy properties
+
+EM observations 
+
+
+
+Moreover, \textbf{frequent mergers and multiple BH interactions are expected in the early Universe, which necessitates including triple BH interactions in such post-processing analyses}.
+
+Another key dynamical effect to be included in post-processing is the GW recoil kick imparted to the merger remnant by asymmetric GW emission \cite{Bekenstein1973}.  The lower escape velocities of host halos at higher redshifts make it easier for BHs to escape via GW recoil and slingshot kicks.
+    
+Moreover, we don't know which galaxies host these 
+
+
+
+\section{Background}
+
+\subsection{Cosmological simulations}
+
+
+Moreover, most large-volume cosmological simulations have a limited gas mass resolution and simply seed $\sim 10^5 - 10^6$ \msun{} BHs in sufficiently massive halos ($\gtrsim 10^{10}$ \msun{}), thereby failing to capture the evolution of lower-mass MBHs ($\sim 10^3 - 10^4$ \msun{}) detectable by LISA. Recent advances, however, have introduced novel sub-grid seeding methods in cosmological simulations, enabling seed masses as low as $\sim 10^3$ \msun{} and exploring both light and heavy seed formation scenarios \cite{bhowmick2023representinglowmassblack,bhowmick2024introducingbrahmasimulationsuite,bhowmick2024growthhighredshiftsupermassive,bhowmick2024signaturesblackholeseeding}. 
+
+
+With the novel sub-grid seeding model, these simulations can probe BHs with $\sim 10^3 - 10^7$ \msun{} masses at $z \geq 7$, offering an opportunity to explore MBH assembly in the high redshift regime.  
+
+
+
+\subsection{Massive black hole binary evolution}
+
+\subsection{Host galaxy properties}
+
+\subsection{BH-galaxy coevolution}
+
+We have less understanding of the type of galaxies that host GW sources of merging MBHs which is required for us to pin down possible EM counterparts to future PTA and LISA detections.
+
+In the case of PTAs, Continous waves could be detected from individual sources and detecting the EM counterpart could give us a lot of information about the dynamics and accretion. 
+
+EM counterparts could be detected at lower redshifts. Why characterising the host galaxies are important.
+
+
+Gas accretion dominates BH growth over cosmic time (Sołtan, 1982; Shankar et al., 2009), and for the vast majority of BHs in the Universe, electromagnetic (EM) observations of this process are the only means of studying them. Feedback from accreting BHs, or active galactic nuclei (AGN), appears to be crucial for maintaining the low star formation rates of massive galaxies at low redshift (e.g., Fabian, 2012; Di Matteo et al., 2005; Vogelsberger et al., 2014; Schaye et al., 2015). A host of multiwavelength data also demonstrate that AGN feedback is present from parsec to Mpc scales in a wide range of galaxies (e.g., Nesvadba et al., 2006; Greene et al., 2011; Tombesi et al., 2015).
+
+
+
+
+\section{Modeling MBH dynamics in cosmological simulations}
+
+\subsection{Methods}
+
+\subsection{Results}
+
+\subsection{Future work}
+
+\section{Characterizing the host galaxies of MBH mergers}
+
+\subsection{Methods}
+
+\subsection{Results}
+
+\subsection{Future work}
+
+
+
+% % Acknowledgments
+% \phantomsection
+% \addcontentsline{toc}{section}{Acknowledgments}
+% \input{sections/acknowledgements}
+% \newpage
+
+% References
+\phantomsection
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrtnat}
+\bibliography{bib/refer, bib/mypub}
+\newpage
+
+% % Paper records
+% \phantomsection
+% \addcontentsline{toc}{section}{Appendix: Publications}
+% \input{sections/publications}
+
+\end{document}
